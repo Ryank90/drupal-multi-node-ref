@@ -1,0 +1,14 @@
+<?php
+
+/* implementation of hook_theme */
+function multi_ref_theme()
+{
+    return array(
+        'multi_ref_multiselect' => array(
+            'arguments' => array(
+                'element' => NULL
+            )
+        )
+    );
+}
+
