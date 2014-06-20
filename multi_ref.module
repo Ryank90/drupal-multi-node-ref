@@ -12,3 +12,41 @@ function multi_ref_theme()
     );
 }
 
+/* theme for individual elements */
+function theme_multi_ref_multiselect($element)
+{
+    return $element['#children'];
+}
+
+/* implementation of hook_widget_settings */
+function multi_ref_widget_settings($op, $widget)
+{
+    switch ($op) {
+        case 'form':
+            
+            $form = array();
+            $match = isset($widget['multiselect_match']) ? $widget['multiselect_match'] : 'contains';
+            $size = (isset($widget['size']) && is_numeric($widget['size'])) ? $widget['size'] : 60;
+            
+            $form['multiselect_match'] = array(
+                '#type' => 'hidden', 
+                '#value' => $match
+            );
+            
+            $form['size'] = array(
+                '#type' => 'hidden', 
+                '#value' => $size
+            );
+            
+            return $form;
+            
+            break;
+        case 'save':
+            
+            return array(
+                'multiselect_match', 'size'
+            );
+             
+            break;
+    }
+}
