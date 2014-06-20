@@ -1,0 +1,5 @@
+name = Multi Select Node Reference
+description = Multi Select Node Reference CCK Field
+dependencies[] = nodereference
+package = CCK
+core = 6.x
